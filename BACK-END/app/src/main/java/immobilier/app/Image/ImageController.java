@@ -1,5 +1,6 @@
 package immobilier.app.Image;
 
+import lombok.Getter;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/images")
+@Getter
 public class ImageController {
 
-    private ImageService imageService;
+    private final ImageService imageService;
 
     public ImageController(ImageService imageService){
         this.imageService = imageService;
@@ -24,14 +27,15 @@ public class ImageController {
         return imageService.createImage(image);
     }
 
+
     @GetMapping("/{id}")
     public Image getImageById(@PathVariable Long id) {
         return imageService.getImageById(id);
     }
 
     @PutMapping("/{id}")
-    public Image updateImage(@PathVariable Long id, @RequestBody Image image) {
-        return imageService.updateImage(id, image);
+    public Image updateImage(@PathVariable Long id,@RequestBody String description, @RequestBody Image image) {
+        return imageService.updateImage(id,description, image);
     }
 
     @DeleteMapping("/{id}")

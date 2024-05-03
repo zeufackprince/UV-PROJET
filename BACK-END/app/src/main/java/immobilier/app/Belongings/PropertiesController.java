@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequestMapping("/api/properties")
 @RestController
@@ -23,7 +22,7 @@ public class PropertiesController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Properties> getAProperty(Long id){
+    public Properties getAProperty(Long id){
          return propertiesService.getAProperty(id);
     }
 
@@ -37,6 +36,11 @@ public class PropertiesController {
     @PutMapping(path = "{id}")
     public void updateProperty(@PathVariable Long id,@RequestBody Properties properties){
         propertiesService.updateProp(id, properties);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProperty(@PathVariable Long id){
+        propertiesService.deleteProp(id);
     }
 
 }
