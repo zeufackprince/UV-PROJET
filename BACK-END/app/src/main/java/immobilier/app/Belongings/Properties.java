@@ -28,7 +28,7 @@ public class Properties {
 
     private PropType Prop_Type;
 
-    private Integer Prop_Price;
+    private Double Prop_Price;
 
     @OneToMany
     @JoinColumn(name = "property_image_id")

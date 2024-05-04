@@ -14,4 +14,9 @@ public class AgentService {
         this.agentRepository = agentRepository;
     }
 
+    public Agent getAgentById(Long agentId) {
+    
+        return this.agentRepository.getAgentById(agentId);
+    }
+
 }

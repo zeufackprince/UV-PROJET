@@ -1,38 +1,43 @@
-package immobilier.app.User;
+package immobilier.app.Post;
 
-import immobilier.app.Image.Image;
+import java.util.Date;
+
+import immobilier.app.Agent.Agent;
+import immobilier.app.Belongings.PropType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+
 
 @Entity
 @Table
-@AllArgsConstructor @NoArgsConstructor
-@Setter @Getter @ToString
-public class User {
-    
+@Setter @Getter
+@NoArgsConstructor @AllArgsConstructor
+public class PosteImmobilier {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String name;
-    
-    private String email;
+    private String description;
 
-    private String telephone;
+    private PropType type;
+
+    private double price;
 
     private String localisation;
 
-    @OneToOne
-    @JoinColumn(name = "profile_image_id")
-    private Image profileImage;
+    private Date datePost;
+    
+    @ManyToOne
+    @JoinColumn(name = "agent_id")
+    private Agent agent;
 }
